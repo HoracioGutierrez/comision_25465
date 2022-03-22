@@ -13,8 +13,6 @@ const ItemDetail = ({item}) => {
         setSeleccionado(cantidadSeleccionada)
     }
 
-    //useNavegate()
-
     return (
         <article className="itemDetail">
             <img src={item.image} alt="" />

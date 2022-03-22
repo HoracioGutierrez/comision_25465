@@ -4,10 +4,10 @@ import { contexto } from "./miContexto"
 
 const Carrito = () => {
 
-    const {carrito,total,setCarrito} = useContext(contexto)
+    const {carrito,total,borrarProdDelCarrito} = useContext(contexto)
 
     const handleClick = () => {
-        
+        //setCarrito(algo)
     }
 
     return (

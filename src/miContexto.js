@@ -1,15 +1,7 @@
 import { createContext, useState } from "react";
-import App from "./App";
-
 
 export const contexto = createContext()
-
-
-//const Provider = contexto.Provider
-//const Consumer = contexto.Consumer
-//const {Provider, Consumer} = contexto
 const { Provider } = contexto
-//<Provider >
 
 const MiProvider = ({ children }) => {
 

@@ -358,3 +358,13 @@ LEER EL CONTEXTO
 PATRON PROVIDER / CAMBIAR EL CONTEXTO
 8) Crear un componente nuevo que va a usar el contexto
 9) En el retorno usas el Provider con su prop value (que setea el valor del contexto)
+
+
+
+
+useMemo : Memoriza una variable interna de un componente si no es funcion
+useCallback : Memoriza una función interna de un componente si es funcion
+
+useEffect(fn,array)
+
+memo (HoC) : Memoriza un componente
