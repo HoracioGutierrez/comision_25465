@@ -368,3 +368,13 @@ useCallback : Memoriza una función interna de un componente si es funcion
 useEffect(fn,array)
 
 memo (HoC) : Memoriza un componente
+
+
+
+Base de datos : Es un conjunto de datos que se pueden consultar, modificar, etc.
+RELACIONALES / NO RELACIONALES : SQL - MySQL - PostgreSQL / MongoDB - Firestore - Cassandra - etc.
+
+ABML : Alta, Baja, Modificación, Listado
+CRUD : Create, Read, Update, Delete
+
+

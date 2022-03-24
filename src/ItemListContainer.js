@@ -2,8 +2,9 @@ import ItemList from "./ItemList"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import { useParams } from "react-router-dom"
-import productos from "./productos.json"
-
+import { db } from "./firebase"
+import { collection , getDocs , getFirestore, query , where } from "firebase/firestore"
+//getDocs - getDoc - collection - updateDoc - addDoc - query - where
 
 const ItemListContainer = () => {
 
@@ -13,8 +14,28 @@ const ItemListContainer = () => {
 
     useEffect(() => {
 
+        const productosCollection = collection(db,"productos")
+        const consulta = getDocs(productosCollection)
+        //const consulta = getDocs(query())
+        
+        consulta
+            .then((resultado)=>{
+                
+                const array_de_resultados = resultado.docs.map((doc)=>{
+                    return doc.data()
+                    //console.log(doc.id)
+                })
+
+                //console.log(array_de_resultados)
+                setProductos(array_de_resultados)
+                setLoading(false)
+            })
+            .catch(()=>{
+                toast.error("Error al cargar los productos")
+            })
+        
         //fetch('/productosPublic.json') 
-        fetch('https://fakestoreapi.com/products')
+        /* fetch('https://fakestoreapi.com/products')
             .then((response) => {
                 return response.json()
             })
@@ -26,66 +47,15 @@ const ItemListContainer = () => {
             })
             .finally(() => {
                 setLoading(false)
-            })
+            }) */
 
     }, [idCategoria])
 
-    return (
-        <>
-            <p className={loading && "red"}>Texto 1</p>
-        </>
-    )
-
-
-    /* return (
-        <>
-            <p className={loading ? "red" : null}>Texto 1</p>
-        </>
-    ) */
-
-    /* return (
-        <>
-            {
-                loading ? <p className="rojo">Texto 1</p> : <p className="azul">Texto 1</p>
-            }
-        </>
-    ) */
-
-    /* return (
-        <>
-            <p>{loading ? "Un texto" : "El otro"}</p>
-        </>
-    ) */
-    
-
-    
-    /* return (
-        <>
-            {
-                loading ? <p>Cargando</p> : <p>Termino la carga</p>
-            }
-        </>
-    )
-     */
-    
-    /* return (
-        <>
-            { loading && <p>Cargando</p> }
-        </>
-    )
-    */
-
-    /* return (
-        <>
-            { loading ? <h1>Cargando...</h1> : <ItemList productos={productos} /> }
-        </>
-    ) */
-
-    /* if (loading) {
+    if (loading) {
         return <h1>Cargando...</h1>
     } else {
         return <ItemList productos={productos} />
-    } */
+    }
 }
 
 export default ItemListContainer
