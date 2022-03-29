@@ -5,27 +5,19 @@ const { Provider } = contexto
 
 const MiProvider = ({ children }) => {
 
-    const [carrito, setCarrito] = useState([
-        {
-            id: 1,
-            nombre: "Camisa",
-            precio: 50,
-            cantidad: 1
-        },
-        {
-            id: 2,
-            nombre: "Pantalon",
-            precio: 100,
-            cantidad: 1
-        }
-    ])
+    const [carrito, setCarrito] = useState([])
     const [cantidad, setCantidad] = useState(0)
-    const [total, setTotal] = useState(false)
+    const [total, setTotal] = useState(0)
 
-    const addItem = (producto,cantidad) => {
-        //1) Siempre que quiera modificar un estado y es objeto/array lo tengo que copiar
+    const addItem = (producto, nuevaCantidad) => {
+        
+        console.log(producto.price * cantidad)
+
         const copia = carrito.slice(0)
-
+        copia.push({ ...producto, nuevaCantidad })
+        setCarrito(copia)
+        setCantidad(cantidad + nuevaCantidad)
+        setTotal(total + producto.price * nuevaCantidad)
         
         /* if(yaExisteEnCarrito(id)){
             
@@ -36,7 +28,7 @@ const MiProvider = ({ children }) => {
         } */
     }
 
-    const yaExisteEnCarrito = (id) => {}
+    const yaExisteEnCarrito = (id) => { }
 
     const borrarProdDelCarrito = (id) => {
         //filter
