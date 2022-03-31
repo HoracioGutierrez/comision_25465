@@ -378,3 +378,45 @@ ABML : Alta, Baja, Modificación, Listado
 CRUD : Create, Read, Update, Delete
 
 
+
+
+
+ENVIROMENT : 
+
+url_db
+user_db
+pass_db
+port_db
+
+
+
+src/
+  |_index.js
+  |_client
+    |_ui/
+      |_layout/
+        |_App.js
+        |_Header.js
+        |_Footer.js
+        |_Main.js
+        |_NavBar.js
+      |_components/
+        |_Button.js
+      |_pages/
+        |_Home.js
+        |_About.js
+        |_Contact.js
+        |_Login.js
+      |_styles/
+        |_index.scss
+        |_variables.scss
+      |_utils/
+        |_servicios.js
+    |_api/
+      |_redux/
+      |_Providers/
+        |_AuthProvider.js
+        |_ThemeProvider.js
+        |_CarritoProvider.js
+        |_VentasProvider.js
+  |_server

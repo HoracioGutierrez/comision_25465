@@ -28,13 +28,16 @@ const ItemListContainer = () => {
         }else{
 
             const productosCollection = collection(db, "productos")
-            const filtro = query(productosCollection,where("category","==",idCategoria))
+            const filtro = query(productosCollection,where("category","==",idCategoria),where("price",">",60))
             const pedido = getDocs(filtro)
 
             pedido
                 .then(res => setProductos(res.docs.map(doc => doc.data())))
                 //.then(res => setProductos(res.docs.map(doc => ({id: doc.id, ...doc.data()} ))))
-                .catch(() => toast.error("Error al cargar los productos"))
+                .catch((error) => {
+                  console.error(error)
+                  toast.error("Error al cargar los productos")
+                })
                 .finally(() => setLoading(false))
 
         }
